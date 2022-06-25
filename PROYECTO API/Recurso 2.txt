@@ -1,0 +1,33 @@
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+
+import org.springframework.jdbc.core.RowMapper;
+
+public class PasajeroMapper implements RowMapper<Pasajero> {
+
+	public LocalDate getLocalDateOrNull(Timestamp timestamp) {
+		return timestamp != null ? timestamp.toLocalDateTime().toLocalDate() : null;
+	}
+	
+	@Override
+	public Pasajero mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Pasajero pasajero = new Pasajero();
+		
+		pasajero.setId(rs.getLong("PASAJERO_ID"));
+		pasajero.setPrimerNombre(rs.getString("PRIMERNOMBRE"));		
+		pasajero.setSegundoNombre(rs.getString("SEGUNDONOMBRE"));
+		pasajero.setPrimerApellido(rs.getString("PRIMERAPELLIDO"));
+		pasajero.setSegundoApellido(rs.getString("SEGUNDOAPELLIDO"));
+		pasajero.setTipoDocumento(rs.getString("TIPO_DOCUMENTO"));
+		pasajero.setNumeroDocumento(rs.getString("NUM_DOCUMENTO"));
+		pasajero.setFechaNacimiento(getLocalDateOrNull(rs.getTimestamp("FECHANACIMIENTO")));
+		pasajero.setPais(rs.getString("PAIS"));
+		pasajero.setTelefono(rs.getString("TELEFONO"));
+		pasajero.setEmail(rs.getString("EMAIL"));
+		pasajero.setClave(rs.getString("CLAVE"));
+		return pasajero;
+	}
+
+}

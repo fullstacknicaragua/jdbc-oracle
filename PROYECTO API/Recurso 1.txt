@@ -1,0 +1,23 @@
+import java.util.Map;
+
+public interface PasajeroDAO {
+
+	String CRUD_PASAJERO = "CRUD_PASAJERO";
+	String pPasajeroId = "pPasajeroId";
+	String pPrimerNombre = "pPrimerNombre";
+	String pSegundoNombre= "pSegundoNombre";
+	String pPrimerApellido= "pPrimerApellido";
+	String pSegundoApellido= "pSegundoApellido";
+	String pTipoDocumento= "pTipoDocumento";
+	String pNumDocumento= "pNumDocumento";
+	String pFechaNacimiento= "pFechaNacimiento";
+	String pPais= "pPais";
+	String pTelefono= "pTelefono";
+	String pEmail= "pEmail";
+	String pClave = "pClave";
+	String pTipoOperacion = "pTipoOperacion";
+		
+	Map<String, Object> guardarPasajero(Pasajero pasajero);
+	
+	Map<String, Object> actualizarPasajero(Pasajero pasajero); 
+}
